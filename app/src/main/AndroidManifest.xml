@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PrototipoAppTcc">
         <activity
+            android:name=".ApresentacaoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CreditosActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
