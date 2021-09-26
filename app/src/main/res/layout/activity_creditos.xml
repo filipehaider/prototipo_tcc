@@ -6,4 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".CreditosActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="386dp"
+        android:layout_height="272dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:gravity="center"
+        android:text="Este aplicativo é um trabalho de conclusão do curso Sistemas de Informação da Universidade Federal de Juiz de Fora desenvolvido pelo aluno Filipe José Haider sob orientação do professor Igor de Oliveira Knop. "
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23000002" />
+
+    <Button
+        android:id="@+id/buttonVoltar"
+        android:layout_width="304dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="32dp"
+        android:text="Voltar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
