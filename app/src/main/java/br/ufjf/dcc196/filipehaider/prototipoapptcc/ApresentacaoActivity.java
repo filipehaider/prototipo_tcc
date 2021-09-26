@@ -55,12 +55,9 @@ public class ApresentacaoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 finish();
             }
-
-
         });
 
 
+
     }
-
-
 }
