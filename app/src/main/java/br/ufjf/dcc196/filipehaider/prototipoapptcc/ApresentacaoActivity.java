@@ -53,11 +53,30 @@ public class ApresentacaoActivity extends AppCompatActivity {
         buttonSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                exibirConfirmacaoSaida();
             }
         });
+    }
 
 
-
+    private void exibirConfirmacaoSaida() {
+        AlertDialog.Builder msgBox = new AlertDialog.Builder(this);
+        msgBox.setTitle("Saindo. . .");
+        msgBox.setMessage("Deseja realmente sair do sistema?");
+        msgBox.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getBaseContext(),"Obrigado por utilizar o nosso aplicativo!",Toast.LENGTH_LONG).show();
+                finish();
+                // O usuário encerra o app e recebe a mensagem
+            }
+        });
+        msgBox.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // o usuário permanece no app
+            }
+        });
+        msgBox.show();
     }
 }
