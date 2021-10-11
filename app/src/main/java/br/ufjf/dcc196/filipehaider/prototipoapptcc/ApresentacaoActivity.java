@@ -58,8 +58,8 @@ public class ApresentacaoActivity extends AppCompatActivity {
         });
     }
 
-
-    private void exibirConfirmacaoSaida() {
+    // Encerra o app clicando no botão "Sair"
+    public void exibirConfirmacaoSaida() {
         AlertDialog.Builder msgBox = new AlertDialog.Builder(this);
         msgBox.setTitle("Saindo. . .");
         msgBox.setMessage("Deseja realmente sair do sistema?");
@@ -78,5 +78,30 @@ public class ApresentacaoActivity extends AppCompatActivity {
             }
         });
         msgBox.show();
+    }
+
+    // Encerra o app clicando na seta de voltar do Android somente na ApresentacaoActivity
+    public void onBackPressed(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Deseja realmente sair do sistema?")
+                .setTitle("Saindo. . .")
+                .setCancelable(false)
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        ApresentacaoActivity.super.onBackPressed();
+                        Toast.makeText(getBaseContext(),"Obrigado por utilizar o nosso aplicativo!",Toast.LENGTH_LONG).show();
+                        // O usuário encerra o app e recebe a mensagem
+                    }
+                })
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                        // o usuário permanece no app
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
     }
 }
