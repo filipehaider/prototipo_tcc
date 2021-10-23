@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 textViewTexto.setText("Voce escolheu a opção 1");
+                //story.chooseChoiceIndex(0);
             }
         });
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 textViewTexto.setText("Parabéns o caminho escolhido foi o 2");
+                //story.chooseChoiceIndex(0);
             }
         });
 
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 textViewTexto.setText("Caminho de número 3");
+                //story.chooseChoiceIndex(0);
             }
         });
 
