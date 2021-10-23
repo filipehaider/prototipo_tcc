@@ -53,6 +53,7 @@ public class ApresentacaoActivity extends AppCompatActivity {
         buttonSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 exibirConfirmacaoSaida();
             }
         });
