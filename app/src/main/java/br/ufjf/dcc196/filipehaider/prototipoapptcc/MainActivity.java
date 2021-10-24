@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         buttonOp2 = findViewById(R.id.buttonOp2);
         buttonOp3 = findViewById(R.id.buttonOp3);
         textViewTexto = findViewById(R.id.textViewTexto);
+
         String  sourceJsonString = getString(R.string.historia_1);
         story = null;
         try {
@@ -50,7 +51,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 textViewTexto.setText("Parabéns o caminho escolhido foi o 2");
-                //story.chooseChoiceIndex(1);
+                try {
+                    story.chooseChoiceIndex(1);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -58,9 +63,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 textViewTexto.setText("Caminho de número 3");
-                //story.chooseChoiceIndex(2);
+                try {
+                    story.chooseChoiceIndex(2);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
+
+        // Pode haver mais botões de opções;
     }
 
     public void atualizaTela(){
@@ -69,16 +80,15 @@ public class MainActivity extends AppCompatActivity {
         while (story.canContinue()) {
             String line = null;
                 line = story.Continue();
-                // Carregar o trecho do texto
+                // Mostrar no TextView o trecho do texto
 
 
-// 3) Display story.currentChoices list, allow player to choose one
+       // 3) Display story.currentChoices list, allow player to choose one
         if (story.getCurrentChoices().size() > 0) {
             for (Choice c : story.getCurrentChoices()) {
                 System.out.println(c.getText());
-                // Carregar o texto dos botoes
+                // Exibir o texto (opções) dos botões
             }
-
 
         } }
         } catch (Exception e) {
@@ -86,6 +96,5 @@ public class MainActivity extends AppCompatActivity {
             }
 
     }
-
 
 }
