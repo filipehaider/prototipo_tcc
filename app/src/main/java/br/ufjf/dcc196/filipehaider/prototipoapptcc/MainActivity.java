@@ -3,6 +3,7 @@ package br.ufjf.dcc196.filipehaider.prototipoapptcc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.JsonReader;
 import android.view.View;
@@ -57,14 +58,26 @@ public class MainActivity extends AppCompatActivity {
         // Indicado pelo bladecoder
         String json = null;
         try {
-            json = getJsonString("ExemploPokemon.ink.json");
+            json = getJsonString("ExemploPokemon.ink.json", getApplicationContext());
+            story = new Story(json);
+            StringBuilder sb = new StringBuilder();
+            while (story.canContinue()) {
+                String line = story.Continue();
+                sb.append(line);
+            }
+            textViewTexto.setText(sb.toString());
+            if (story.getCurrentChoices().size() > 0) {
+                for (int i=0; i<story.getCurrentChoices().size();i++) {
+                    Choice c  = story.getCurrentChoices().get(i);
+                    buttons[i].setText(c.getText());
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        try {
-            story = new Story(json);
+            textViewTexto.setText(e.toString());
         } catch (Exception e) {
             e.printStackTrace();
+            textViewTexto.setText(e.toString());
         }
 
 
@@ -132,9 +145,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Indicado pelo bladecoder
-    private String getJsonString(String filename) throws IOException {
-
-        InputStream is = new FileInputStream(filename);
+    private String getJsonString(String filename, Context context) throws IOException {
+        AssetManager manager = context.getAssets();
+        InputStream is = manager.open(filename);
 
         BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
