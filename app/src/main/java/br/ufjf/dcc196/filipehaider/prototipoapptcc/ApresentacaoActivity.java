@@ -29,7 +29,7 @@ public class ApresentacaoActivity extends AppCompatActivity {
         buttonJogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ApresentacaoActivity.this, MainActivity.class);
+                Intent i = new Intent(ApresentacaoActivity.this, EscolhaNarrativaActivity.class);
                 startActivity(i);
             }
         });
