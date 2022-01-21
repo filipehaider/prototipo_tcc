@@ -25,10 +25,14 @@ public class EscolhaNarrativaActivity extends AppCompatActivity {
         textViewJavaEE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(EscolhaNarrativaActivity.this, CreditosActivity.class);
+                Intent i = new Intent(EscolhaNarrativaActivity.this, Main2Activity.class);
                 startActivity(i);
             }
         });
+
+
+
+
 
 
         buttonVoltar2.setOnClickListener(new View.OnClickListener() {
