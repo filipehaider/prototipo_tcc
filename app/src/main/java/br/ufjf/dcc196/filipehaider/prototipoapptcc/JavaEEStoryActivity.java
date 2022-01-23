@@ -149,7 +149,7 @@ public class JavaEEStoryActivity extends AppCompatActivity {
                     textViewTexto.setText(line);
 
 
-                // Exibir o texto da lista story.currentChoices (alternativas) nos textviews
+                // Exibir o texto da lista story.currentChoices (alternativas) nos textviews que possuem opções (visiveis)
                 for (int i = 0; i < 3; i++) {
                     textviews[i].setVisibility(View.INVISIBLE);
                 }
