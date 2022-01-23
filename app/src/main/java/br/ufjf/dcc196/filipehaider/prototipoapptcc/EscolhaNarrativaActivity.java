@@ -25,7 +25,7 @@ public class EscolhaNarrativaActivity extends AppCompatActivity {
         textViewJavaEE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(EscolhaNarrativaActivity.this, Main2Activity.class);
+                Intent i = new Intent(EscolhaNarrativaActivity.this, JavaEEStoryActivity.class);
                 startActivity(i);
             }
         });
@@ -38,8 +38,7 @@ public class EscolhaNarrativaActivity extends AppCompatActivity {
         buttonVoltar2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(EscolhaNarrativaActivity.this, ApresentacaoActivity.class);
-                startActivity(i);
+                finish();
             }
         });
     }

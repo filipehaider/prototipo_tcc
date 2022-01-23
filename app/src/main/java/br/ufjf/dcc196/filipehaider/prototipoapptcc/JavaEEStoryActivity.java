@@ -17,39 +17,31 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class Main2Activity extends AppCompatActivity {
+public class JavaEEStoryActivity extends AppCompatActivity {
 
-    Button buttonOp1, buttonOp2, buttonOp3;
-    TextView textViewTexto;
+    TextView textViewTexto, textViewAlternativa01, textViewAlternativa02, textViewAlternativa03;
     Story story;
     Integer j;
-    Button[] buttons;
+    TextView[] textviews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-
-        buttons = new Button[3];
-        buttonOp1 = findViewById(R.id.buttonOp1);
-        buttonOp2 = findViewById(R.id.buttonOp2);
-        buttonOp3 = findViewById(R.id.buttonOp3);
-        //Insere os botões em um vetor;
-        buttons[0]=buttonOp1;
-        buttons[1]=buttonOp2;
-        buttons[2]=buttonOp3;
+        setContentView(R.layout.activity_javaee_story);
         textViewTexto = findViewById(R.id.textViewTexto);
 
-       /*String  sourceJsonString = getJsonFromAssets(getApplicationContext(),"ExemploPokemon.ink.json");
-        try {
-            System.out.println(sourceJsonString);
-            story = new Story(sourceJsonString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+        textviews = new TextView[3];
+        textViewAlternativa01 = findViewById(R.id.textViewAlternativa01);
+        textViewAlternativa02 = findViewById(R.id.textViewAlternativa02);
+        textViewAlternativa03 = findViewById(R.id.textViewAlternativa03);
+        //Insere os textviews em um vetor;
+        textviews[0] = textViewAlternativa01;
+        textviews[1] = textViewAlternativa02;
+        textviews[2] = textViewAlternativa03;
 
 
-        // Indicado pelo bladecoder
+
+
         String json = null;
         try {
             json = getJsonString("PadroesEE.ink.json", getApplicationContext());
@@ -60,10 +52,11 @@ public class Main2Activity extends AppCompatActivity {
                 sb.append(line);
             }
             textViewTexto.setText(sb.toString());
+
             if (story.getCurrentChoices().size() > 0) {
-                for (int i=0; i<story.getCurrentChoices().size();i++) {
-                    Choice c  = story.getCurrentChoices().get(i);
-                    buttons[i].setText(c.getText());
+                for (int i = 0; i < story.getCurrentChoices().size(); i++) {
+                    Choice c = story.getCurrentChoices().get(i);
+                    textviews[i].setText(c.getText());
                 }
             }
         } catch (IOException e) {
@@ -75,10 +68,9 @@ public class Main2Activity extends AppCompatActivity {
         }
 
 
-        buttonOp1.setOnClickListener(new View.OnClickListener() {
+        textViewAlternativa01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // textViewTexto.setText("Voce escolheu a opção 1");
                 try {
                     story.chooseChoiceIndex(0);
                     atualizaTela();
@@ -88,10 +80,9 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
 
-        buttonOp2.setOnClickListener(new View.OnClickListener() {
+        textViewAlternativa02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //textViewTexto.setText("Parabéns o caminho escolhido foi o 2");
                 try {
                     story.chooseChoiceIndex(1);
                     atualizaTela();
@@ -101,10 +92,9 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
 
-        buttonOp3.setOnClickListener(new View.OnClickListener() {
+        textViewAlternativa03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // textViewTexto.setText("Caminho de número 3");
                 try {
                     story.chooseChoiceIndex(2);
                     atualizaTela();
@@ -114,26 +104,10 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
         // Pode haver mais botões de opções;
+
     }
 
 
-
-
-    /*static String getJsonFromAssets(Context context, String filename) {
-        String jsonString;
-        try {
-            InputStream is = context.getAssets().open(filename);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            jsonString = new String(buffer, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return jsonString;
-    }*/
 
 
 
@@ -166,8 +140,6 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
-
-
     public void atualizaTela(){
         try {
                 // Mostrar no TextView o texto principal linha por linha
@@ -176,10 +148,15 @@ public class Main2Activity extends AppCompatActivity {
                     line = story.Continue();
                     textViewTexto.setText(line);
 
-                // Exibir o texto da lista story.currentChoices (opções) nos botões
+
+                // Exibir o texto da lista story.currentChoices (alternativas) nos textviews
+                for (int i = 0; i < 3; i++) {
+                    textviews[i].setVisibility(View.INVISIBLE);
+                }
             if (story.getCurrentChoices().size() > 0) {
                 for (j=0; j<story.getCurrentChoices().size(); j++){
-                    buttons[j].setText(story.getCurrentChoices().get(j).getText());
+                    textviews[j].setText(story.getCurrentChoices().get(j).getText());
+                    textviews[j].setVisibility(View.VISIBLE);
                 }
 
             } }

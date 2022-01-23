@@ -8,15 +8,15 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="373dp"
-        android:layout_height="386dp"
+        android:layout_width="383dp"
+        android:layout_height="488dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:gravity="center"
-        android:text="Para começar a jogar é muito simples, basta começar a ler a história e no final da tela será apresentado ao jogador algumas opções de  próximos cenários e assim sucessivamente. Após o término do jogo será exibida uma mensagem de como foi o seu desempenho de acordo com as opções escolhidas ao longo do percurso."
+        android:text="Para começar a jogar é muito simples, basta escolher uma das narrativas interativas e ler a história até o final da tela. Em seguida será apresentado ao jogador algumas opções de  próximos cenários e assim sucessivamente. Após o término do jogo será exibida uma mensagem de encerramento. O jogador faz uma reflexão de como foi o aprendizado dos  conceitos em Engenharia de Software podendo jogar novamente aquela narrativa ou escolher entre outros dois modelos de narrativas. "
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
