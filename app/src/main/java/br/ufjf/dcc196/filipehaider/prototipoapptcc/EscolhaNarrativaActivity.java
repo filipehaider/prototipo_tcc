@@ -30,10 +30,21 @@ public class EscolhaNarrativaActivity extends AppCompatActivity {
             }
         });
 
+        textViewArq01.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(EscolhaNarrativaActivity.this, Narrativa02StoryActivity.class);
+                startActivity(i);
+            }
+        });
 
-
-
-
+        textViewArq02.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(EscolhaNarrativaActivity.this, Narrativa03StoryActivity.class);
+                startActivity(i);
+            }
+        });
 
         buttonVoltar2.setOnClickListener(new View.OnClickListener() {
             @Override

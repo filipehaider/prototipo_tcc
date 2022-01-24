@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,13 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bladecoder.ink.runtime.Choice;
 import com.bladecoder.ink.runtime.Story;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class JavaEEStoryActivity extends AppCompatActivity {
+public class Narrativa02StoryActivity extends AppCompatActivity {
 
     TextView textViewTexto, textViewAlternativa01, textViewAlternativa02, textViewAlternativa03;
     Story story;
@@ -45,9 +43,10 @@ public class JavaEEStoryActivity extends AppCompatActivity {
         textviews[2] = textViewAlternativa03;
 
 
+
         String json = null;
         try {
-            json = getJsonString("PadroesEE.ink.json", getApplicationContext());
+            json = getJsonString("Narrativa_02.ink.json", getApplicationContext());
             story = new Story(json);
             StringBuilder sb = new StringBuilder();
             while (story.canContinue()) {
