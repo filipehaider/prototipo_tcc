@@ -2,18 +2,22 @@ package br.ufjf.dcc196.filipehaider.prototipoapptcc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ApresentacaoActivity extends AppCompatActivity {
 
     Button buttonJogar, buttonInstrucoes, buttonCreditos, buttonSair;
+    TextView textViewTitulo;
+    Animation lefttoright;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,15 @@ public class ApresentacaoActivity extends AppCompatActivity {
         buttonInstrucoes = findViewById(R.id.buttonInstrucoes);
         buttonCreditos = findViewById(R.id.buttonCreditos);
         buttonSair = findViewById(R.id.buttonSair);
+        textViewTitulo = findViewById(R.id.textViewTitulo);
+
+        lefttoright = AnimationUtils.loadAnimation(this,R.anim.lefttoright);
+
+        textViewTitulo.setAnimation(lefttoright);
+        buttonJogar.setAnimation(lefttoright);
+        buttonInstrucoes.setAnimation(lefttoright);
+        buttonCreditos.setAnimation(lefttoright);
+        buttonSair.setAnimation(lefttoright);
 
 
         buttonJogar.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +104,7 @@ public class ApresentacaoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         ApresentacaoActivity.super.onBackPressed();
+                        finish();
                         Toast.makeText(getBaseContext(),"Obrigado por utilizar o nosso aplicativo!",Toast.LENGTH_LONG).show();
                         // O usuário encerra o app e recebe a mensagem
                     }

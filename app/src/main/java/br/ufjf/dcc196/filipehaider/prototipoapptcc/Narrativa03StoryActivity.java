@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,9 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
     Story story;
     Integer j;
     TextView[] textviews;
+    ScrollView scrollView01;
+    Animation fade_in;
+
 
 
 
@@ -31,6 +35,7 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_javaee_story);
+        scrollView01 = findViewById(R.id.scrollView01);
         textViewTexto = findViewById(R.id.textViewTexto);
 
         textviews = new TextView[3];
@@ -42,7 +47,8 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
         textviews[1] = textViewAlternativa02;
         textviews[2] = textViewAlternativa03;
 
-        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+        fade_in = AnimationUtils.loadAnimation(this,R.anim.fade_in);
+       // Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
 
 
 
@@ -57,10 +63,14 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
             }
             textViewTexto.setText(sb.toString());
 
+
             if (story.getCurrentChoices().size() > 0) {
                 for (int i = 0; i < story.getCurrentChoices().size(); i++) {
                     Choice c = story.getCurrentChoices().get(i);
                     textviews[i].setText(c.getText());
+
+                    textViewTexto.setAnimation(fade_in);
+
                 }
             }
         } catch (IOException e) {
@@ -75,15 +85,19 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
         textViewAlternativa01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                 try {
+                try {
                     story.chooseChoiceIndex(0);
-                     textViewTexto.setAnimation(animation);
                     atualizaTela();
+                     textViewTexto.setAnimation(fade_in);
+                    scrollView01.pageScroll(View.FOCUS_UP);
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
             }
+
         });
 
         textViewAlternativa02.setOnClickListener(new View.OnClickListener() {
@@ -111,8 +125,6 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
         });
 
     }
-
-
 
 
 
@@ -146,8 +158,9 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
 
 
     public void atualizaTela(){
+
         try {
-                // Mostrar no TextView o texto principal linha por linha
+            // Mostrar no TextView o texto principal linha por linha
             while (story.canContinue()) {
                 String line;
                     line = story.Continue();
@@ -157,11 +170,21 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
                 // Exibir o texto da lista story.currentChoices (alternativas) nos textviews que possuem opções (visiveis)
                 for (int i = 0; i < 3; i++) {
                     textviews[i].setVisibility(View.INVISIBLE);
+                    textViewTexto.setAnimation(fade_in);
+                    //scrollView01.fullScroll(View.FOCUS_UP);
+                    //scrollView01.scrollTo(0,0);
+                    //scrollView01.pageScroll(View.FOCUS_UP);
+
                 }
             if (story.getCurrentChoices().size() > 0) {
                 for (j=0; j<story.getCurrentChoices().size(); j++){
                     textviews[j].setText(story.getCurrentChoices().get(j).getText());
                     textviews[j].setVisibility(View.VISIBLE);
+                    textViewTexto.setAnimation(fade_in);
+                   //scrollView01.fullScroll(View.FOCUS_UP);
+                   //scrollView01.scrollTo(0,0);
+                   //scrollView01.pageScroll(View.FOCUS_UP);
+
                 }
 
             } }

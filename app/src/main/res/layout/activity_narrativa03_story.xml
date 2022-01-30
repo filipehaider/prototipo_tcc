@@ -7,12 +7,15 @@
     tools:context=".MainActivity">
 
     <ScrollView
+        android:id="@+id/scrollView01"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:background="@drawable/pagina"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -23,20 +26,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:scrollY="@dimen/appbar_padding_top">
 
             <TextView
                 android:id="@+id/textViewTexto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:fontFamily="cursive"
                 android:gravity="left"
                 android:scrollbarAlwaysDrawHorizontalTrack="false"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:scrollbars="vertical"
                 android:scrollHorizontally="false"
                 android:text="Era uma vez . . ."
-                android:textSize="24sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/textViewAlternativa01"
@@ -62,7 +67,6 @@
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:scrollbars="vertical"
                 android:scrollHorizontally="false"
-                android:text="Texto"
                 android:textColor="#2D40AA"
                 android:textSize="20sp" />
 

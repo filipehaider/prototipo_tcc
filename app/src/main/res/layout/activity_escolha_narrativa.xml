@@ -16,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewArq02" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewArq02"
+        app:layout_constraintVertical_bias="0.64" />
 
     <TextView
         android:id="@+id/textView8"
@@ -45,12 +46,13 @@
         android:text="Exemplo Java EE"
         android:textColor="#A52020"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewArq02"
+        app:layout_constraintVertical_bias="0.19999999" />
 
     <TextView
         android:id="@+id/textViewArq01"
@@ -60,11 +62,12 @@
         android:text="Exemplo Arquitetura de Software 01"
         android:textColor="#FA009602"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewJavaEE"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.120000005" />
 
     <TextView
         android:id="@+id/textViewArq02"
@@ -74,9 +77,10 @@
         android:text="Exemplo Arquitetura de Software 02"
         android:textColor="#FA009602"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewArq01"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintVertical_bias="0.110000014" />
 </androidx.constraintlayout.widget.ConstraintLayout>
