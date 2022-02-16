@@ -46,10 +46,12 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
         textviews[0] = textViewAlternativa01;
         textviews[1] = textViewAlternativa02;
         textviews[2] = textViewAlternativa03;
+        textviews[0].setVisibility(View.INVISIBLE);
+        textviews[1].setVisibility(View.INVISIBLE);
+        textviews[2].setVisibility(View.INVISIBLE);
+
 
         fade_in = AnimationUtils.loadAnimation(this,R.anim.fade_in);
-       // Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
-
 
 
         String json = null;
@@ -63,14 +65,13 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
             }
             textViewTexto.setText(sb.toString());
 
-
             if (story.getCurrentChoices().size() > 0) {
                 for (int i = 0; i < story.getCurrentChoices().size(); i++) {
                     Choice c = story.getCurrentChoices().get(i);
                     textviews[i].setText(c.getText());
-
                     textViewTexto.setAnimation(fade_in);
-
+                    textviews[i].setAnimation(fade_in);
+                    textviews[i].setVisibility(View.VISIBLE);
                 }
             }
         } catch (IOException e) {
@@ -89,13 +90,9 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
                     story.chooseChoiceIndex(0);
                     atualizaTela();
                      textViewTexto.setAnimation(fade_in);
-                    scrollView01.pageScroll(View.FOCUS_UP);
-
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
 
         });
@@ -106,7 +103,8 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
                 try {
                     story.chooseChoiceIndex(1);
                     atualizaTela();
-                } catch (Exception e) {
+                    textViewTexto.setAnimation(fade_in);
+                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -118,7 +116,8 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
                 try {
                     story.chooseChoiceIndex(2);
                     atualizaTela();
-                } catch (Exception e) {
+                    textViewTexto.setAnimation(fade_in);
+                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -166,31 +165,22 @@ public class Narrativa03StoryActivity extends AppCompatActivity {
                     line = story.Continue();
                     textViewTexto.setText(line);
 
-
                 // Exibir o texto da lista story.currentChoices (alternativas) nos textviews que possuem opções (visiveis)
                 for (int i = 0; i < 3; i++) {
                     textviews[i].setVisibility(View.INVISIBLE);
                     textViewTexto.setAnimation(fade_in);
-                    //scrollView01.fullScroll(View.FOCUS_UP);
-                    //scrollView01.scrollTo(0,0);
-                    //scrollView01.pageScroll(View.FOCUS_UP);
 
                 }
             if (story.getCurrentChoices().size() > 0) {
                 for (j=0; j<story.getCurrentChoices().size(); j++){
                     textviews[j].setText(story.getCurrentChoices().get(j).getText());
+                    textViewTexto.startAnimation(fade_in);
+                    textviews[j].startAnimation(fade_in);
                     textviews[j].setVisibility(View.VISIBLE);
-                    textViewTexto.setAnimation(fade_in);
-                   //scrollView01.fullScroll(View.FOCUS_UP);
-                   //scrollView01.scrollTo(0,0);
-                   //scrollView01.pageScroll(View.FOCUS_UP);
-
                 }
-
             } }
         } catch (Exception e) {
                 e.printStackTrace();
             }
     }
-
 }
